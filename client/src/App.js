@@ -1,11 +1,16 @@
-import './App.css';
+import { Route } from "react-router-dom";
+import Home from "./components/home/Home";
+import LandingPage from "./components/landing/LandingPage";
+import Country from "./components/country/Country";
+import Form from './components/form/Form'
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <h1>Henry Countries</h1>
-    </div>
+    <>
+      <Route exact path='/' component={LandingPage}/>
+      <Route exact path='/home' component={Home}/>
+      <Route exact path='/create' component={Form}/>
+      <Route exact path='/country/:id' component={Country}/>
+    </>
   );
 }
-
-export default App;
