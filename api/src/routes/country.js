@@ -12,7 +12,7 @@ const getCountry = async () => {
             return {
                 id: c.cca3,
                 name: c.name.common,
-                image: c.flags[0],
+                image: c.flags[1],
                 continent: c.region,
                 capital: c.capital ? c.capital[0] : "No tiene capital",
                 subregion: c.subregion,
@@ -30,7 +30,7 @@ const getCountry = async () => {
                 capital: country[i].capital,
                 subregion: country[i].subregion,
                 area: country[i].area,
-                population: country[i].population
+                population: country[i].population,
             });
         }
 
@@ -40,7 +40,7 @@ const getCountry = async () => {
     }
 }
 
-router.get('/', async(req, res) => {
+router.get('/', async(req, res, next) => {
     const db = await Country.findAll();
     const { name } = req.query;
 
@@ -61,7 +61,7 @@ router.get('/', async(req, res) => {
                 res.status(200).send(countryName)
             }
         } catch (error) {
-            console.log(error)
+            next(error)
         }
     } else {
         try {
@@ -75,12 +75,12 @@ router.get('/', async(req, res) => {
             }
             
         } catch (error) {
-            res.status(404).send(error)
+            next(error)
         }
     }
 })
 
-router.get('/:idPais', async (req, res) => {
+router.get('/:idPais', async (req, res, next) => {
     const id = req.params.idPais.toUpperCase();
 
     try {
@@ -94,7 +94,7 @@ router.get('/:idPais', async (req, res) => {
             res.status(404).send("No existe el pais.");
         }
     } catch (error) {
-        res.status(404).send(error);
+        next(error);
     }
 })
 
