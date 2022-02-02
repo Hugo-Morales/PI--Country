@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkgrey;
+    height: 60px;
+}
+
+.logo {
+    width: 160px;
+    height: 50px;
+    margin: 0 20px;
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+}
+
+.form {
+    margin-right: 20px;
+}
