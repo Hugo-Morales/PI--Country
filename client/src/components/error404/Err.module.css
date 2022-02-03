@@ -1,0 +1,26 @@
+.error_page {
+    height: 100vh;
+    background-image: url('./error-404.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.error_a {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+    padding-bottom: 5%;
+    text-transform: uppercase;
+}
+
+.error_a a {
+    color: #000;
+    padding: 15px;
+    border-radius: 7px;
+    transition: .5 all;
+}
+
+.error_a a:hover {
+    background-color: rgba(82, 82, 82, 0.493);
+}
