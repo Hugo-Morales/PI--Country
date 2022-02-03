@@ -92,7 +92,7 @@ export default function Form() {
                                 }
                             </datalist>
                         </div>
-                        <input className={styles.input} type="button" value="Agregar País" onClick={add} />
+                        <input className={styles.input} type="button" value="Agregar País" style={{ cursor: 'pointer', }} onClick={add} />
                         {err.countries && <div className={styles.error}><p>{err.countries}</p></div>}
                     </div>
 
@@ -106,7 +106,7 @@ export default function Form() {
                             )
                         })
                     }
-                    <input className={styles.input} type="submit" value="Agregar Actividad" />
+                    <input className={styles.input} type="submit" value="Agregar Actividad" style={{ cursor: 'pointer', }} />
                 </form>
             </div>
         </div>
