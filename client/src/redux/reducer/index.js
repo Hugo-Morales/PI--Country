@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, GET_DETAILS,GET_NAME } from "../actions";
+import { GET_COUNTRIES, GET_DETAILS, GET_NAME, SEARCH } from "../actions";
 
 const initialState = {
     countries: [],
@@ -22,6 +22,10 @@ export default function rootReducer(state = initialState, action) {
         case GET_NAME: return {
             ...state,
             names: action.payload
+        }
+        case SEARCH: return {
+            ...state,
+            countries: action.payload,
         }
         default: return state;
     }
