@@ -59,3 +59,13 @@
     padding-top: 10px;
     color: red;
 }
+
+.list_country {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.button_add {
+    padding: 4px;
+}

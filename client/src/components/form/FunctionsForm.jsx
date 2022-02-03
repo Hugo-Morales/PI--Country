@@ -41,17 +41,18 @@ export default function FunctionsForm(Validate) {
         if (Object.keys(err).length === 0 && countries.add.length !== 0 && actividad.name && actividad.difficulty && actividad.duration && actividad.season) {
             dispatch(addActivity(newActity))
             alert('Se a creado una actividad exitosamente.')
+
+            setActividad({
+                name: '',
+                difficulty: '',
+                duration: '',
+                season: '',
+                country: '',
+            })
+
+            setCountries({ add: [] })
         }
 
-        setActividad({
-            name: '',
-            difficulty: '',
-            duration: '',
-            season: '',
-            country: '',
-        })
-
-        setCountries([])
     }
 
     const add = (e) => {
@@ -60,7 +61,7 @@ export default function FunctionsForm(Validate) {
         if (!actividad.country.trim()) {
             alert("El campo no puede estar vacío.")
         } else if (countries.add.some(c => c === actividad.country)) {
-            alert("No se puede")
+            alert("No se puede agregar el mismo país.")
         } else {
             if (actividad.country !== '') {
                 countries.add.push(actividad.country)
@@ -74,9 +75,12 @@ export default function FunctionsForm(Validate) {
     }
 
     const eliminar = (id) => {
-        let country = countries.filter(c => c !== id)
+        let country = countries.add.filter(c => c !== id)
 
-        setCountries(country)
+        setCountries({
+            ...country,
+            add: country,
+        })
     }
 
     return { onChange, actividad, submitForm, err, add, countries, eliminar }

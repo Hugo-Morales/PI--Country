@@ -99,9 +99,9 @@ export default function Form() {
                     {
                         countries.add?.map((c) => {
                             return (
-                                <div key={c}>
+                                <div key={c} className={styles.list_country}>
                                     <label className={styles.label}>{c}</label>
-                                    <button onClick={() => eliminar(c)}>X</button>
+                                    <button className={styles.button_add} onClick={() => eliminar(c)}>X</button>
                                 </div>
                             )
                         })
