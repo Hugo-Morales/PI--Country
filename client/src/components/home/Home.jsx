@@ -24,15 +24,24 @@ export default function Home() {
                 ) : (
                     <div className={styles.container}>
                         {
-                            allCountries?.map((p, index) => {
-                                return <Countries
-                                    flag={p.image}
-                                    name={p.name}
-                                    continente={p.continent}
-                                    id={p.id}
-                                    key={index}
-                                />
-                            })
+                            allCountries.length > 0 ? (allCountries.map((p, index) => {
+                                return <div key={index}>
+                                    <Countries
+                                        flag={p.image}
+                                        name={p.name}
+                                        continente={p.continent}
+                                        id={p.id} />
+                                </div>
+                            })) : (
+                                <div className={styles.container_err}>
+                                    <div className={styles.error}>
+                                        <h1>Error 404</h1>
+                                    </div>
+                                    <div className={styles.error_details}>
+                                        <h4>El país que estás buscando no existe.</h4>
+                                    </div>
+                                </div>
+                            )
                         }
                     </div>
                 )

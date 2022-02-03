@@ -2,7 +2,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 30px;
-    padding-bottom: 50px;
+    padding: 30px 0;
     background-color: #d6ccc2;
+}
+
+.container_err {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    color: #3f37c9;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.error_details {
+    text-transform: uppercase;
+    text-align: center;
 }
