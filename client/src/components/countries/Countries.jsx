@@ -6,7 +6,7 @@ export default function Countries({ flag, name, continente, id }) {
         <div className={styles.container}>
             <div className={styles.title}>
                 <Link to={`/country/${id}`}>
-                    <h3>País: {name}</h3>
+                    <h3>{name} | ({id})</h3>
                 </Link>
             </div>
             <div className={styles.img}>
