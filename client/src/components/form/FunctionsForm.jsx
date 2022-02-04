@@ -51,6 +51,8 @@ export default function FunctionsForm(Validate) {
             })
 
             setCountries({ add: [] })
+        } else {
+            alert('Falta completar los campos')
         }
 
     }

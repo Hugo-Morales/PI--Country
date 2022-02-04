@@ -106,7 +106,9 @@ export default function Form() {
                             )
                         })
                     }
-                    <input className={styles.input} type="submit" value="Agregar Actividad" style={{ cursor: 'pointer', }} />
+                    <div className={styles.submit}>
+                        <input className={styles.input} type="submit" value="Agregar Actividad" style={{ cursor: 'pointer', }} />
+                    </div>
                 </form>
             </div>
         </div>

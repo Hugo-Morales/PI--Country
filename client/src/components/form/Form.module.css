@@ -33,7 +33,7 @@
     display: flex;
     align-items: flex-end;
     flex-direction: column;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding: 10px 0;
 }
 
@@ -69,4 +69,9 @@
 .button_add {
     padding: 4px;
     cursor: pointer;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
 }
