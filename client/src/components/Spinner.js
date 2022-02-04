@@ -1,11 +1,14 @@
-import spinner from '../img/spinner.gif'
+import styles from './Spinner.module.css'
 
 export default function Spinner () {
     return (
-        <img 
-            src={spinner} 
-            style = {{width:'200px', margin:'auto', display:'block'}}
-            alt='Loading'
-        />
+        <div className={styles['sk-chase']}>
+            <div className={styles['sk-chase-dot']}></div>
+            <div className={styles['sk-chase-dot']}></div>
+            <div className={styles['sk-chase-dot']}></div>
+            <div className={styles['sk-chase-dot']}></div>
+            <div className={styles['sk-chase-dot']}></div>
+            <div className={styles['sk-chase-dot']}></div>
+        </div>
     )
 }
