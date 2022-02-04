@@ -36,3 +36,7 @@ a {
 a:hover {
     color: slategray;
 }
+
+.title a:hover {
+    color: #407ba7;
+}

@@ -21,7 +21,6 @@
     transition: .2;
 }
 
-
 .button:hover {
     cursor: pointer;
     animation: borderPulse 1000ms infinite ease-out, hoverShine 200ms;

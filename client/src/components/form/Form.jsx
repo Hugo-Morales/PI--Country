@@ -6,7 +6,7 @@ import styles from './Form.module.css';
 import log from '../nav/logo.jpg';
 import FunctionsForm from './FunctionsForm';
 import Validate from './Validate';
-
+ 
 const DIFFICULTY = ['Seleccionar Dificultad', '1', '2', '3', '4', '5'];
 const SEASON = ['Seleccionar Temporada', 'Spring', 'Summer', 'Autumn', 'Winter'];
 

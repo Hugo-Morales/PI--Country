@@ -1,0 +1,26 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid;
+    width: 100%;
+}
+
+.list_page {
+    display: flex;
+    margin: 25px 0;
+}
+
+.page {
+    background-color: darkgrey;
+    border: 1px solid;
+    padding: 7px 8px;
+}
+
+.active {
+    color: #fff;
+}
+
+.activ {
+    background-color: #3a0ca3 !important;
+}
