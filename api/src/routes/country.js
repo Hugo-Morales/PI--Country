@@ -59,7 +59,7 @@ router.get('/', async(req, res, next) => {
                 // res.status(404).send("No existe el pais.");
                 res.send([]);
             } else {
-                res.status(304).send(countryName)
+                res.send(countryName)
             }
         } catch (error) {
             next(error)
