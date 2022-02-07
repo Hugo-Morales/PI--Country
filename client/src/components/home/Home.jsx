@@ -6,6 +6,7 @@ import Spinner from '../Spinner';
 import Countries from "../countries/Countries";
 import Pagination from "../pagination/Pagination";
 import styles from './Home.module.css'
+import Filters from "../filter/Filters";
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export default function Home() {
     return (
         <div className={styles.home}>
             <Navbar />
+            <Filters />
             {
                 loading ? (
                     <Spinner />
