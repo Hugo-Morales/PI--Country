@@ -4,6 +4,7 @@ export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_DETAILS = 'GET_DETAILS';
 export const GET_NAME = 'GET_NAME';
 export const SEARCH = 'SEARCH';
+export const FILTER = 'FILTER'
 
 export const getCountries = () => async dispatch => {
     const res = await axios.get("http://localhost:3001/countries/");
@@ -38,6 +39,15 @@ export const SearchCountry = (name) => async dispatch => {
     dispatch({
         type: SEARCH,
         payload: res.data, 
+    })
+}
+
+export const filterCountry = (filter) => async dispatch => {
+    const fil = await axios.get(`http://localhost:3001/filter/${filter}`);
+
+    dispatch({
+        type: FILTER,
+        payload: fil.data,
     })
 }
 
