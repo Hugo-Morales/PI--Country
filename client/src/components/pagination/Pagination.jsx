@@ -4,7 +4,7 @@ import styles from './Pagination.module.css';
 export default function Pagination({ countryPerPage, totalPost, paginate, currentPage }) {
     const page = [];
 
-    for (let i = 1; i < Math.ceil(totalPost / countryPerPage); i++) {
+    for (let i = 1; i < Math.ceil(totalPost / countryPerPage) + 1; i++) {
         page.push(i)
     }
 
