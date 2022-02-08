@@ -1,22 +1,25 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { filterCountry, getCountries } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterCountry, getCountries, getActivity, getActivityforId } from '../../redux/actions';
 import styles from './Filter.module.css';
 
 export const ORALFA = ['Ordenar Alfabeticamente', 'A-Z', 'Z-A'];
 export const ORCONT = ['Ordenar por Continente', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 export const ORPO = ['Ordenar por Población', 'Mayor Población', 'Menor Población'];
-export const ORDACT = ['Ordenar por Actividad'];
 
 export default function Filters() {
     const dispatch = useDispatch();
+    const actividades = useSelector(state => state.actividades);
     const [AtoZ, setAtoZ] = useState('');
     const [continent, setContinent] = useState('');
     const [poblacion, setPoblacion] = useState('');
+    const [actividad, setActividad] = useState('');
 
     useEffect(() => {
+        dispatch(getActivity());
         if (AtoZ !== '') {
             if (AtoZ === 'Ordenar Alfabeticamente') {
+                setAtoZ('');
                 dispatch(getCountries());
             } else {
                 dispatch(filterCountry(AtoZ))
@@ -25,6 +28,7 @@ export default function Filters() {
 
         if (continent !== '') {
             if (continent === 'Ordenar por Continente') {
+                setContinent('')
                 dispatch(getCountries());
             } else {
                 dispatch(filterCountry(continent))
@@ -33,13 +37,22 @@ export default function Filters() {
 
         if (poblacion !== '') {
             if (poblacion === 'Ordenar por Población') {
+                setPoblacion('')
                 dispatch(getCountries());
             } else {
                 dispatch(filterCountry(poblacion))
             }
         }
 
-    }, [dispatch, AtoZ, continent, poblacion]);
+        if (actividad !== '') {
+            if (actividad === 'Ordenar por Actividad') {
+                setActividad('')
+                dispatch(getCountries());
+            } else {
+                dispatch(getActivityforId(actividad))
+            }
+        }
+    }, [dispatch, AtoZ, continent, poblacion, actividad]);
 
     return (
         <div className={styles.container}>
@@ -65,9 +78,10 @@ export default function Filters() {
                 </select>
             </div>
             <div>
-                <select name="OrdenarAct">
+                <select name="OrdenarAct" onChange={(e) => setActividad(e.target.value)}>
+                    <option value="Ordenar por Actividad">Ordenar por Actividad</option>
                     {
-                        ORDACT.map((d, index) => <option key={index}>{d}</option>)
+                        actividades.map((d, index) => <option key={index} value={d.id}>{d.name}</option>)
                     }
                 </select>
             </div>
