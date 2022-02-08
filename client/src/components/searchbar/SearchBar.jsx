@@ -8,7 +8,8 @@ export default function SearchBar() {
     const [buscar, setBuscar] = useState('')
 
     const onChange = (e) => {
-        setBuscar(e.target.value)
+        setBuscar(e.target.value);
+        dispatch(SearchCountry(buscar));
     }
 
     const Submit = (e) => {
