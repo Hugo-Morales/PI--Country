@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getDetailCountry } from '../../redux/actions';
+import { Link, useParams } from "react-router-dom";
+import { getDetailCountry, reset } from '../../redux/actions';
 import Navbar from '../nav/Navbar';
 import Spinner from "../Spinner";
+import styles from './Country.module.css'
 
 export default function Country() {
     const dispatch = useDispatch();
@@ -13,6 +14,10 @@ export default function Country() {
 
     useEffect(() => {
         dispatch(getDetailCountry(id));
+
+        return () => {
+            dispatch(reset())
+        }
     }, [dispatch, id]);
 
     return (
@@ -21,34 +26,69 @@ export default function Country() {
                 loading ? (
                     <Spinner />
                 ) : (
-                    <div>
+                    <>
                         <Navbar />
-                        <h4>ID: {details.id}</h4>
-                        <h4>Area: {details.area} km2</h4>
-                        <h4>Capital: {details.capital}</h4>
-                        <h4>Continente: {details.continent}</h4>
-                        <img src={details.image} alt="img" />
-                        <h4>País: {details.name}</h4>
-                        <h4>Población: {details.population}</h4>
-                        <h4>Subregion: {details.subregion}</h4>
-                        {
-                            details.activities?.length >= 1 ? (
-                                <h4>Actividades: {details.activities.map((e, index) => {
-                                    return (
-                                        <div key={index}>
-                                            <h3>{e.name} :</h3>
-                                            <h4>Dificultad: {e.difficulty}</h4>
-                                            <h4>Duration: {e.duration} hs</h4>
-                                            <h4>Temporada: {e.season}</h4>
+                        <div className={styles.container}>
+                            <div className={styles.container_img}>
+                                <img src={details.image} alt="img" />
+                            </div>
+                            <div className={styles.container_details}>
+                                <div className={styles.contai_title}>
+                                    <h4 className={styles.container_title}>ID:</h4>
+                                    <h4 className={styles.container_title_details}>{details.id}</h4>
+                                </div>
+                                <div className={styles.contai_title}>
+                                    <h4 className={styles.container_title}>País:</h4>
+                                    <h4 className={styles.container_title_details}>{details.name}</h4>
+                                </div>
+                                <div className={styles.contai_title}>
+                                    <h4 className={styles.container_title}>Capital:</h4>
+                                    <h4 className={styles.container_title_details}>{details.capital}</h4>
+                                </div>
+                                <div className={styles.contai_title}>
+                                    <h4 className={styles.container_title}>Area:</h4>
+                                    <h4 className={styles.container_title_details}>{details.area} km2</h4>
+                                </div>
+                                <div className={styles.contai_title}>
+                                    <h4 className={styles.container_title}>Continente:</h4>
+                                    <h4 className={styles.container_title_details}>{details.continent}</h4>
+                                </div>
+                                <div className={styles.contai_title}>
+                                    <h4 className={styles.container_title}>Población:</h4>
+                                    <h4 className={styles.container_title_details}>{details.population} de habitantes</h4>
+                                </div>
+                                <div className={styles.contai_title}>
+                                    <h4 className={styles.container_title}>Subregión:</h4>
+                                    <h4 className={styles.container_title_details}>{details.subregion}</h4>
+                                </div>
+                                {
+                                    details.activities?.length >= 1 ? (
+                                        <div>
+                                            <h4 className={styles.title}>Actividades:</h4>
+                                            <div className={styles.contai_title}>
+                                                <h4 className={styles.container_title}>Nombre</h4>
+                                                <h4 className={styles.container_title_details}>{details.activities.map((e, index) => (
+                                                    <div key={index}>
+                                                        <h3>{e.name}</h3>
+                                                        <h4>Dificultad: {e.difficulty}</h4>
+                                                        <h4>Duración: {e.duration} hs</h4>
+                                                        <h4>Temporada: {e.season}</h4>
+                                                    </div>
+                                                ))}</h4>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className={styles.contai_title}>
+                                            <h4 className={styles.container_title}>Sin actividades</h4>
+                                            <Link to='/create'>
+                                                <h4 className={styles.container_title_add}>Agregar una nueva actividad</h4>
+                                            </Link>
                                         </div>
                                     )
-                                })}</h4>
-                            ) : (
-                                <h4>Sin actividades</h4>
-                            )
-                        }
-
-                    </div>
+                                }
+                            </div>
+                        </div>
+                    </>
                 )
             }
         </>
