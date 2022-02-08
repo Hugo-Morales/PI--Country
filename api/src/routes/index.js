@@ -2,7 +2,7 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const activities = require('./activities');
-const { Country } = require("../db.js");
+const { Country, Activities, countries_activities } = require("../db.js");
 const country = require('./country');
 
 const router = Router();
@@ -22,14 +22,14 @@ router.get('/filter/:order', async (req, res) => {
                 order: [["name", "ASC"]],
             });
         
-            return res.status(200).send(az);
+            return res.send(az);
         }
         case 'Z-A' :{
             const za = await Country.findAll({
                 order: [["name", "DESC"]],
             });
         
-            return res.status(200).send(za);
+            return res.send(za);
         }
         case 'Africa':
             case 'Americas':
@@ -42,25 +42,50 @@ router.get('/filter/:order', async (req, res) => {
                                 }
                             })
                         
-                            return res.status(200).send(cont);
+                            return res.send(cont);
                         }
         case 'Mayor Población': {
             const bigger = await Country.findAll({
                 order: [["population", "DESC"]],
             });
         
-            return res.status(200).send(bigger);
+            return res.send(bigger);
         }
         case 'Menor Población': {
             const lower = await Country.findAll({
                 order: [["population", "ASC"]],
             });
         
-            return res.status(200).send(lower);
+            return res.send(lower);
         }
         default:
-            return res.send(`Filter not found!`);
+            return res.send('Filter not found!!');
     }
 })
+
+router.get("/actividadPais", async (req, res) => {
+    let actividadPorPais = await countries_activities.findAll();
+    return res.status(200).send(actividadPorPais);
+});
+
+router.get("/actividadPais/:id", async (req, res) => {
+    const { id } = req.params;
+
+    let actividadPorPais = await countries_activities.findAll({
+        where: {
+            activityId: id
+        },
+    });
+
+    let idPais = actividadPorPais.map(c => c.countryId);
+
+    let paisconeseId = await Country.findAll({
+        where:{
+            id: idPais
+        }
+    })
+
+    return res.status(200).send(paisconeseId);
+});
 
 module.exports = router;
