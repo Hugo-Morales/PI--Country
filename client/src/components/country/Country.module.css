@@ -30,6 +30,11 @@
     color: #2f4858;
 }
 
+.container_accordion {
+    width: 100%;
+    text-transform: uppercase;
+}
+
 .container_title_add {
     text-transform: uppercase;
     background-color: #023e8a;
@@ -43,6 +48,11 @@
 }
 
 .title {
+    text-transform: uppercase;
+}
+
+.titleAC {
+    padding: 7px 0;
     text-transform: uppercase;
 }
 

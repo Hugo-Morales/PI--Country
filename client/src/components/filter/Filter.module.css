@@ -5,3 +5,17 @@
     padding: 20px 0;
     border-bottom: 2px solid;
 }
+
+.select {
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    padding: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+option {
+    background: #B1E8CD;
+}

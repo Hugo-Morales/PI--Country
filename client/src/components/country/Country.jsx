@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getDetailCountry, reset } from '../../redux/actions';
 import Navbar from '../nav/Navbar';
 import Spinner from "../Spinner";
+import Accordion from "./Accordion/Accordion";
 import styles from './Country.module.css'
 
 export default function Country() {
@@ -11,6 +12,7 @@ export default function Country() {
     const { id } = useParams();
     const details = useSelector(state => state.details);
     const loading = useSelector(state => state.isLoading);
+    const [pull, setpull] = useState('')
 
     useEffect(() => {
         dispatch(getDetailCountry(id));
@@ -64,15 +66,18 @@ export default function Country() {
                                 {
                                     details.activities?.length >= 1 ? (
                                         <div>
-                                            <h4 className={styles.title}>Actividades:</h4>
+                                            <h4 className={styles.titleAC}>Actividades:</h4>
                                             <div className={styles.contai_title}>
-                                                <h4 className={styles.container_title}>Nombre</h4>
-                                                <h4 className={styles.container_title_details}>{details.activities.map((e, index) => (
+                                                <h4 className={styles.container_accordion}>{details.activities.map((e, index) => (
                                                     <div key={index}>
-                                                        <h3>{e.name}</h3>
-                                                        <h4>Dificultad: {e.difficulty}</h4>
-                                                        <h4>Duración: {e.duration} hs</h4>
-                                                        <h4>Temporada: {e.season}</h4>
+                                                        <Accordion
+                                                            name={e.name}
+                                                            difficulty={e.difficulty}
+                                                            duration={e.duration}
+                                                            season={e.season}
+                                                            active={pull}
+                                                            setpull={setpull}
+                                                        />
                                                     </div>
                                                 ))}</h4>
                                             </div>

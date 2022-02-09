@@ -18,6 +18,10 @@
     padding: 7px 8px;
 }
 
+.page:hover {
+    background-color: #3a0ca3;
+}
+
 .active {
     color: #fff;
 }

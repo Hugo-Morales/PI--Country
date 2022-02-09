@@ -57,28 +57,28 @@ export default function Filters() {
     return (
         <div className={styles.container}>
             <div>
-                <select name="OrdenarAlfa" onChange={(e) => setAtoZ(e.target.value)}>
+                <select name="OrdenarAlfa" onChange={(e) => setAtoZ(e.target.value)} className={styles.select}>
                     {
                         ORALFA.map((d, index) => <option key={index}>{d}</option>)
                     }
                 </select>
             </div>
             <div>
-                <select name="OrdenarCont" onChange={(e) => setContinent(e.target.value)}>
+                <select name="OrdenarCont" onChange={(e) => setContinent(e.target.value)} className={styles.select}>
                     {
                         ORCONT.map((d, index) => <option key={index}>{d}</option>)
                     }
                 </select>
             </div>
             <div>
-                <select name="OrdenarPob" onChange={(e) => setPoblacion(e.target.value)}>
+                <select name="OrdenarPob" onChange={(e) => setPoblacion(e.target.value)} className={styles.select}>
                     {
                         ORPO.map((d, index) => <option key={index}>{d}</option>)
                     }
                 </select>
             </div>
             <div>
-                <select name="OrdenarAct" onChange={(e) => setActividad(e.target.value)}>
+                <select name="OrdenarAct" onChange={(e) => setActividad(e.target.value)} className={styles.select}>
                     <option value="Ordenar por Actividad">Ordenar por Actividad</option>
                     {
                         actividades.map((d, index) => <option key={index} value={d.id}>{d.name}</option>)

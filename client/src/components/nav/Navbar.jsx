@@ -11,10 +11,10 @@ export default function Navbar() {
                     <img src={log} alt="" />
                 </div>
             </Link>
-            <SearchBar />
             <Link to='/create'>
-                <h1 className={styles.form}>Crear Actividad</h1>
+                <h1>Crear Actividad</h1>
             </Link>
+            <SearchBar />
         </div>
     );
 }
