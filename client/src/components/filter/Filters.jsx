@@ -4,8 +4,8 @@ import { filterCountry, getCountries, getActivity, getActivityforId } from '../.
 import styles from './Filter.module.css';
 
 export const ORALFA = ['Ordenar Alfabeticamente', 'A-Z', 'Z-A'];
-export const ORCONT = ['Ordenar por Continente', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
-export const ORPO = ['Ordenar por Población', 'Mayor Población', 'Menor Población'];
+export const ORCONT = ['Ordenar por Continente', 'Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'South America', 'Oceania'];
+export const ORPO = ['Ordenar por Población', 'Mayor Población', 'Menor Población', 'Mayor Area', 'Menor Area'];
 
 export default function Filters() {
     const dispatch = useDispatch();
