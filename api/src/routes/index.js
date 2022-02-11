@@ -32,18 +32,20 @@ router.get('/filter/:order', async (req, res) => {
             return res.send(za);
         }
         case 'Africa':
-            case 'Americas':
+            case 'Antarctica':
                 case 'Asia':
                     case 'Europe':
-                        case 'Oceania': {
-                            const cont = await Country.findAll({
-                                where: {
-                                    continent: order
+                        case 'North America':
+                            case 'South America':
+                                case 'Oceania': {
+                                    const cont = await Country.findAll({
+                                        where: {
+                                            continent: order
+                                        }
+                                    })
+                                
+                                    return res.send(cont);
                                 }
-                            })
-                        
-                            return res.send(cont);
-                        }
         case 'Mayor Población': {
             const bigger = await Country.findAll({
                 order: [["population", "DESC"]],
@@ -57,6 +59,20 @@ router.get('/filter/:order', async (req, res) => {
             });
         
             return res.send(lower);
+        }
+        case 'Mayor Area': {
+            const biggera = await Country.findAll({
+                order: [["area", "DESC"]],
+            });
+        
+            return res.send(biggera);
+        }
+        case 'Menor Area': {
+            const lowera = await Country.findAll({
+                order: [["area", "ASC"]],
+            });
+        
+            return res.send(lowera);
         }
         default:
             return res.send('Filter not found!!');
