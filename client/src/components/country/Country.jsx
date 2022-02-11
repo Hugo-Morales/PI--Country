@@ -12,7 +12,7 @@ export default function Country() {
     const { id } = useParams();
     const details = useSelector(state => state.details);
     const loading = useSelector(state => state.isLoading);
-    const [pull, setpull] = useState('')
+    const [pull, setpull] = useState('');
 
     useEffect(() => {
         dispatch(getDetailCountry(id));
@@ -49,7 +49,7 @@ export default function Country() {
                                 </div>
                                 <div className={styles.contai_title}>
                                     <h4 className={styles.container_title}>Area:</h4>
-                                    <h4 className={styles.container_title_details}>{details.area} km2</h4>
+                                    <h4 className={styles.container_title_details}>{new Intl.NumberFormat('es-MX').format(details.area)} km2</h4>
                                 </div>
                                 <div className={styles.contai_title}>
                                     <h4 className={styles.container_title}>Continente:</h4>
@@ -57,11 +57,16 @@ export default function Country() {
                                 </div>
                                 <div className={styles.contai_title}>
                                     <h4 className={styles.container_title}>Población:</h4>
-                                    <h4 className={styles.container_title_details}>{details.population} de habitantes</h4>
+                                    <h4 className={styles.container_title_details}>{
+                                        details.population ? (
+                                            <>{new Intl.NumberFormat('es-MX').format(details.population)} habitantes</>
+                                        ) : (<>Sin habitantes</>)}</h4>
                                 </div>
                                 <div className={styles.contai_title}>
                                     <h4 className={styles.container_title}>Subregión:</h4>
-                                    <h4 className={styles.container_title_details}>{details.subregion}</h4>
+                                    <h4 className={styles.container_title_details}>{
+                                        details.subregion ? (<>{details.subregion}</>) : (<>No Tiene Subregión</>)
+                                    }</h4>
                                 </div>
                                 {
                                     details.activities?.length >= 1 ? (

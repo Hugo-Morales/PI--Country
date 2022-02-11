@@ -24,7 +24,10 @@ export default function Home() {
         dispatch(getCountries());
     }, [dispatch]);
 
-    const paginate = (currentPage) => setCurrentPage(currentPage);
+    const paginate = (currentPage) => {
+        setCurrentPage(currentPage);
+        window.scrollTo(0, 0);
+    }
 
     return (
         <div className={styles.home}>

@@ -4,7 +4,7 @@
 }
 
 .accordionHeading {
-    background-color: #3f475d;
+    background-color: #6b705c;
     padding: 10px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .accordionContent {
-    background-color: #619b8a;
+    background-color: #fff1e6;
     height: 0;
     opacity: 0;
     display: flex;
