@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { addActivity } from '../../redux/actions';
 
 export default function FunctionsForm(Validate) {
+    let history = useHistory();
     const dispatch = useDispatch();
     const [err, setErr] = useState({});
     const [countries, setCountries] = useState({
@@ -38,9 +40,9 @@ export default function FunctionsForm(Validate) {
             countries: countries.add,
         }
 
-        if (Object.keys(err).length === 0 && countries.add.length !== 0 && actividad.name && actividad.difficulty && actividad.duration && actividad.season) {
+        if (Object.keys(err).length === 0 && countries.add.length && actividad.name && actividad.difficulty && actividad.duration && actividad.season) {
             dispatch(addActivity(newActity))
-            alert('Se a creado una actividad exitosamente.')
+            alert(`Se a creado la actividad ${actividad.name} exitosamente.`)
 
             setActividad({
                 name: '',
@@ -51,8 +53,9 @@ export default function FunctionsForm(Validate) {
             })
 
             setCountries({ add: [] })
+            history.push("/home");
         } else {
-            alert('Falta completar los campos')
+            alert('Falta completar los campos.')
         }
 
     }

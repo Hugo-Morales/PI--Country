@@ -23,7 +23,7 @@ export default function Validate(actividad, countries) {
         err.season = 'Tenes que seleccionar una temporada.'
     }
 
-    if (!countries.add?.length) {
+    if (!countries.add.length) {
         err.countries = 'Debes al menos ingresar un país.'
     }
 
