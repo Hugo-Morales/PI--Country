@@ -36,8 +36,27 @@ router.post('/', async (req, res) => {
 })
 
 router.get("/", async (req, res) => {
-    let activities = await Activities.findAll();
+    const activities = await Activities.findAll();
     res.status(200).send(activities);
 });
+
+router.delete('/delete/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await Activities.destroy({
+            where: {
+                id
+            }
+        });
+
+        const activities = await Activities.findAll();
+        res.status(200).send(activities);
+
+        // res.status(200).send("Se borro la actividad correctamente.")
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 module.exports = router;
