@@ -8,6 +8,18 @@ export const FILTER = 'FILTER';
 export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const GET_ACTIVITY_FOR_ID = 'GET_ACTIVITY_FOR_ID';
 export const RESET = 'RESET';
+export const DELETE = 'DELETE';
+
+// export const getCountries = () => async dispatch => {
+//    await fetch("http://localhost:3001/countries/")
+//     .then(r => r.json())
+//     .then(data => {
+//         dispatch({
+//             type: GET_COUNTRIES,
+//             payload: data, 
+//         })
+//     })
+// };
 
 export const getCountries = () => async dispatch => {
     const res = await axios.get("http://localhost:3001/countries/");
@@ -79,5 +91,14 @@ export const addActivity = (obj) => async () => {
 export const reset = () => dispatch => {
     dispatch({
         type: RESET,
+    })
+}
+
+export const deleteActivity = (id) => async dispatch => {
+    const res = await axios.delete(`http://localhost:3001/activity/delete/${id}`);
+
+    dispatch({
+        type: DELETE,
+        payload: res.data,
     })
 }

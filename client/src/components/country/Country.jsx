@@ -82,6 +82,7 @@ export default function Country() {
                                                             season={e.season}
                                                             active={pull}
                                                             setpull={setpull}
+                                                            id={e.id}
                                                         />
                                                     </div>
                                                 ))}</h4>
