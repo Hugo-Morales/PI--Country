@@ -59,7 +59,7 @@ export default function Home() {
                             )
                         },
                         {
-                            allCountries.length >= 15 ? (
+                            allCountries.length >= 10 ? (
                                 <Pagination countryPerPage={countryPerPage} totalPost={allCountries.length} paginate={paginate} currentPage={currentPage} />
                             ) : (null)
                         }
