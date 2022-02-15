@@ -40,7 +40,7 @@
     height: 0;
     opacity: 0;
     display: flex;
-    overflow: hidden;
+    width: 90%;
     transition: all 600ms ease-in-out;
 }
 

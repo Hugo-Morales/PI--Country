@@ -6,12 +6,12 @@ import { deleteActivity } from '../../../redux/actions'
 export default function Accordion({ name, difficulty, duration, season, active, setpull, id }) {
     const dispatch = useDispatch();
 
-    function refreshPage() {
+    const refreshPage = () => {
         dispatch(deleteActivity(id))
         alert(`Se borro la actividad ${name}`)
         window.location.reload(false);
     }
-    console.log(id)
+    // console.log(id)
 
     return (
         <div className={styles.accordion}>
