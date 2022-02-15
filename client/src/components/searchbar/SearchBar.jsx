@@ -15,7 +15,6 @@ export default function SearchBar() {
 
     const Submit = (e) => {
         e.preventDefault();
-
         dispatch(SearchCountry(buscar));
     }
 

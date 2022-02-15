@@ -32,7 +32,7 @@ export default function Home() {
     return (
         <div className={styles.home}>
             <Navbar />
-            <Filters />
+            <Filters currentPage={setCurrentPage} />
             {
                 loading ? (
                     <Spinner />
@@ -59,7 +59,7 @@ export default function Home() {
                             )
                         },
                         {
-                            allCountries.length > 0 ? (
+                            allCountries.length >= 15 ? (
                                 <Pagination countryPerPage={countryPerPage} totalPost={allCountries.length} paginate={paginate} currentPage={currentPage} />
                             ) : (null)
                         }
