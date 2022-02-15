@@ -9,6 +9,7 @@ export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const GET_ACTIVITY_FOR_ID = 'GET_ACTIVITY_FOR_ID';
 export const RESET = 'RESET';
 export const DELETE = 'DELETE';
+export const LOADING = 'LOADING';
 
 // export const getCountries = () => async dispatch => {
 //    await fetch("http://localhost:3001/countries/")
@@ -100,5 +101,11 @@ export const deleteActivity = (id) => async dispatch => {
     dispatch({
         type: DELETE,
         payload: res.data,
+    })
+}
+
+export const loading = () => dispatch => {
+    dispatch({
+        type: LOADING,
     })
 }
