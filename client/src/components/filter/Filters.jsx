@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterCountry, getCountries, getActivity, getActivityforId } from '../../redux/actions';
+import { filterCountry, getCountries, getActivity, getActivityforId, loading } from '../../redux/actions';
 import styles from './Filter.module.css';
 
 export const ORALFA = ['Ordenar Alfabeticamente', 'A-Z', 'Z-A'];
 export const ORCONT = ['Ordenar por Continente', 'Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'South America', 'Oceania'];
 export const ORPO = ['Ordenar por Población', 'Mayor Población', 'Menor Población', 'Mayor Area', 'Menor Area'];
 
-export default function Filters() {
+export default function Filters({ currentPage }) {
     const dispatch = useDispatch();
     const actividades = useSelector(state => state.actividades);
     const [AtoZ, setAtoZ] = useState('');
@@ -16,43 +16,69 @@ export default function Filters() {
     const [actividad, setActividad] = useState('');
 
     useEffect(() => {
-        dispatch(getActivity());
+        currentPage(1);
         if (AtoZ !== '') {
             if (AtoZ === 'Ordenar Alfabeticamente') {
                 setAtoZ('');
-                dispatch(getCountries());
+                dispatch(loading());
+                setTimeout(() => {
+                    dispatch(getCountries());
+                }, 400);
             } else {
-                dispatch(filterCountry(AtoZ))
+                dispatch(loading());
+                setTimeout(() => {
+                    dispatch(filterCountry(AtoZ));
+                }, 400);
             }
         }
 
         if (continent !== '') {
             if (continent === 'Ordenar por Continente') {
-                setContinent('')
-                dispatch(getCountries());
+                setContinent('');
+                dispatch(loading());
+                setTimeout(() => {
+                    dispatch(getCountries());
+                }, 400);
             } else {
-                dispatch(filterCountry(continent))
+                dispatch(loading());
+                setTimeout(() => {
+                    dispatch(filterCountry(continent));
+                }, 400);
             }
         }
 
         if (poblacion !== '') {
             if (poblacion === 'Ordenar por Población') {
-                setPoblacion('')
-                dispatch(getCountries());
+                setPoblacion('');
+                dispatch(loading());
+                setTimeout(() => {
+                    dispatch(getCountries());
+                }, 400);
             } else {
-                dispatch(filterCountry(poblacion))
+                dispatch(loading());
+                setTimeout(() => {
+                    dispatch(filterCountry(poblacion));
+                }, 400);
             }
         }
 
         if (actividad !== '') {
             if (actividad === 'Ordenar por Actividad') {
-                setActividad('')
-                dispatch(getCountries());
+                setActividad('');
+                dispatch(loading());
+                setTimeout(() => {
+                    dispatch(getCountries());
+                }, 400);
             } else {
-                dispatch(getActivityforId(actividad))
+                dispatch(loading())
+                setTimeout(() => {
+                    dispatch(getActivityforId(actividad));
+                }, 700);
             }
+        } else {
+            dispatch(getActivity());
         }
-    }, [dispatch, AtoZ, continent, poblacion, actividad]);
+    }, [dispatch, AtoZ, continent, poblacion, actividad, currentPage]);
 
     return (
         <div className={styles.container}>
