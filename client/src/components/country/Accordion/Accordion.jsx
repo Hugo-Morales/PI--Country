@@ -1,17 +1,21 @@
 import styles from './Accordion.module.css';
 import img from './trash-2.svg';
 import { useDispatch } from 'react-redux';
-import { deleteActivity } from '../../../redux/actions'
+import { deleteActivity, deleteActivityonDetails } from '../../../redux/actions'
 
-export default function Accordion({ name, difficulty, duration, season, active, setpull, id }) {
+export default function Accordion({ name, difficulty, duration, season, active, setpull, id, id_activity }) {
     const dispatch = useDispatch();
 
     const refreshPage = () => {
-        dispatch(deleteActivity(id))
-        alert(`Se borro la actividad ${name}`)
+        // dispatch(deleteActivity(id))
+        let act_id = {
+            id: id
+        }
+
+        dispatch(deleteActivityonDetails(id_activity, act_id))
+        alert(`Se borro la actividad ${name} en este país.`)
         window.location.reload(false);
     }
-    // console.log(id)
 
     return (
         <div className={styles.accordion}>

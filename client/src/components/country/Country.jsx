@@ -83,6 +83,7 @@ export default function Country() {
                                                             active={pull}
                                                             setpull={setpull}
                                                             id={e.id}
+                                                            id_activity={details.id}
                                                         />
                                                     </div>
                                                 ))}</h4>
