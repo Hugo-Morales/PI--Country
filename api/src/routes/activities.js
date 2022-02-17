@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Activities, Country } = require("../db.js");
+const { Activities, Country, countries_activities } = require("../db.js");
 const router = Router();
 
 router.post('/', async (req, res) => {
@@ -54,6 +54,46 @@ router.delete('/delete/:id', async (req, res) => {
         res.status(200).send(activities);
 
         // res.status(200).send("Se borro la actividad correctamente.")
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.put('/update/:name', async (req,res) => {
+    const { name } = req.params;
+    const { id } = req.body
+
+    try {
+        const all = await countries_activities.findAll({
+            where: {
+                activityId: id
+            }
+        });
+
+        if (all.length === 1) {
+            await countries_activities.destroy({
+                where: {
+                    countryId: name,
+                    activityId: id
+                }
+            })
+
+            await Activities.destroy({
+                where: {
+                    id
+                }
+            });
+
+            res.send("Se borro correctamente")
+        } else {
+            await countries_activities.destroy({
+                where: {
+                    countryId: name,
+                    activityId: id
+                }
+            })
+            res.send("Se borro correctamente")
+        }
     } catch (error) {
         console.log(error)
     }
