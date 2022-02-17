@@ -19,3 +19,12 @@
 option {
     background: #B1E8CD;
 }
+
+.refresh {
+    border-radius: 24%;
+    cursor: pointer;
+}
+
+.refresh img {
+    padding: 3px;
+}

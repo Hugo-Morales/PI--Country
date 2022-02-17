@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterCountry, getCountries, getActivity, getActivityforId, loading } from '../../redux/actions';
 import styles from './Filter.module.css';
+import img from './refresh-ccw.svg';
 
 export const ORALFA = ['Ordenar Alfabeticamente', 'A-Z', 'Z-A'];
 export const ORCONT = ['Ordenar por Continente', 'Africa', 'Antarctica', 'Asia', 'Europe', 'North America', 'South America', 'Oceania'];
@@ -110,6 +111,11 @@ export default function Filters({ currentPage }) {
                         actividades.map((d, index) => <option key={index} value={d.id}>{d.name}</option>)
                     }
                 </select>
+            </div>
+            <div>
+                <button onClick={() => window.location.reload(false)} className={styles.refresh}>
+                    <img src={img} alt='refresh' />
+                </button>
             </div>
         </div >
     )
