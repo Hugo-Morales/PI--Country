@@ -2,7 +2,7 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const activities = require('./activities');
-const { Country, Activities, countries_activities } = require("../db.js");
+const { Country, countries_activities } = require("../db.js");
 const country = require('./country');
 
 const router = Router();
@@ -21,7 +21,7 @@ router.get('/filter/:order', async (req, res) => {
             const az = await Country.findAll({
                 order: [["name", "ASC"]],
             });
-        
+
             return res.send(az);
         }
         case 'Z-A' :{
@@ -74,8 +74,7 @@ router.get('/filter/:order', async (req, res) => {
         
             return res.send(lowera);
         }
-        default:
-            return res.send('Filter not found!!');
+        default: return res.send('Filter incorrecto.');
     }
 })
 
