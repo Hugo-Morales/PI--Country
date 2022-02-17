@@ -1,4 +1,5 @@
-import { GET_COUNTRIES, GET_DETAILS, GET_NAME, SEARCH, FILTER, GET_ACTIVITY, GET_ACTIVITY_FOR_ID, RESET, DELETE, LOADING } from "../actions";
+import { GET_COUNTRIES, GET_DETAILS, GET_NAME, SEARCH, FILTER, GET_ACTIVITY, GET_ACTIVITY_FOR_ID,
+    RESET, DELETE, LOADING, DELETE_COUNTRY_ON_ACT } from "../actions";
 
 const initialState = {
     countries: [],
@@ -27,6 +28,7 @@ export default function rootReducer(state = initialState, action) {
         case SEARCH: return {
             ...state,
             countries: action.payload,
+            isLoading: false,
         }
         case FILTER: return {
             ...state,
@@ -34,6 +36,10 @@ export default function rootReducer(state = initialState, action) {
             isLoading: false,
         }
         case GET_ACTIVITY: return {
+            ...state,
+            actividades: action.payload,
+        }
+        case DELETE_COUNTRY_ON_ACT: return {
             ...state,
             actividades: action.payload,
         }
