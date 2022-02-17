@@ -10,7 +10,7 @@ export const GET_ACTIVITY_FOR_ID = 'GET_ACTIVITY_FOR_ID';
 export const RESET = 'RESET';
 export const DELETE = 'DELETE';
 export const LOADING = 'LOADING';
-export const DELETE_DETAILS = 'DELETE_DETAILS';
+export const DELETE_COUNTRY_ON_ACT = 'DELETE_COUNTRY_ON_ACT';
 
 // export const getCountries = () => async dispatch => {
 //    await fetch("http://localhost:3001/countries/")
@@ -115,7 +115,7 @@ export const deleteActivityonDetails = (id, name) => async dispatch => {
     const res = await axios.put(`http://localhost:3001/activity/update/${id}`, name);
 
     dispatch({
-        type: DELETE_DETAILS,
+        type: DELETE_COUNTRY_ON_ACT,
         payload: res.data,
     })
 }
